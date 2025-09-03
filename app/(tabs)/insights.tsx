@@ -3,11 +3,11 @@ import { StyleSheet } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
-export default function HomesScreen() {
+export default function InsightsScreen() {
   return (
     <ThemedView style={styles.container}>
-      <ThemedText style={styles.title}>Home</ThemedText>
-      <ThemedText style={styles.subtitle}>HomeScreen</ThemedText>
+      <ThemedText style={styles.title}>Insights</ThemedText>
+      <ThemedText style={styles.subtitle}>Analytics and insights will appear here</ThemedText>
     </ThemedView>
   );
 }
