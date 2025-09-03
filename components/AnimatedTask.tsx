@@ -1,7 +1,7 @@
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { TaskItem } from '@/types/taskTypes';
 import { useEffect } from 'react';
 import { Animated, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { TaskItem } from '../types/taskTypes';
+import { IconSymbol } from './ui/IconSymbol';
 
 const AnimatedTask = ({ task, onToggleStatus }: { task: TaskItem, onToggleStatus: (id: number) => void }) => {
   const slideAnim = new Animated.Value(0)

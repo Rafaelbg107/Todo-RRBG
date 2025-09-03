@@ -1,11 +1,11 @@
-import AnimatedTask from '@/components/AnimatedTask';
-import FlashMessage from '@/components/FlashMessage';
-import TaskModal from '@/components/TaskModal';
-import { TaskItem } from '@/types/taskTypes';
-import { getItemFromStorage, setItemToStorage } from '@/utils/storageUtils';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import AnimatedTask from '../../components/AnimatedTask';
+import FlashMessage from '../../components/FlashMessage';
+import TaskModal from '../../components/TaskModal';
+import { TaskItem } from '../../types/taskTypes';
+import { getItemFromStorage, setItemToStorage } from '../../utils/storageUtils';
 
 export default function MyWorkScreen() {
 
