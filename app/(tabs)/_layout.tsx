@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     height: 75,
     width: 75,
     position: 'absolute',
-    bottom: Platform.OS === 'ios' ? 45 : 60,
+    bottom: Platform.OS === 'ios' ? 45 : (Platform.OS === 'android' ? 60 : 10),
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',

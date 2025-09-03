@@ -1,7 +1,7 @@
 
-import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState } from 'react';
 import { Modal, Pressable, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import DatePicker from './DatePicker';
 import { IconSymbol } from './ui/IconSymbol';
 
 interface Props {
@@ -100,21 +100,20 @@ const TaskModal = ({showAddTaskModal, handleAddTask, handleCloseModal}: Props) =
                 </View>
                 {showDatePicker && (
                   <View style={styles.datePickerContainer}>
-                    <DateTimePicker
+                    <DatePicker
                       value={dueDate ?? new Date()}
                       mode="date"
-                      display="default"
                       onChange={handleDateChange}
                       style={styles.datePicker}
                     />
                   </View>
                 )}
+
                 {showTimePicker && (
                   <View style={styles.datePickerContainer}>
-                    <DateTimePicker
+                    <DatePicker
                       value={dueDate ?? new Date()}
                       mode="time"
-                      display="default"
                       onChange={handleTimeChange}
                       style={styles.datePicker}
                     />
