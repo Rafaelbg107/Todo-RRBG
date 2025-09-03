@@ -1,5 +1,5 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
 import AnimatedTask from '../../components/AnimatedTask';
 import FlashMessage from '../../components/FlashMessage';
@@ -13,6 +13,7 @@ export default function MyWorkScreen() {
   const [showAddTaskModal, setShowAddTaskModal] = useState(false)
   const [showFlashMessage, setShowFlashMessage] = useState(false)
   const [completedTaskId, setCompletedTaskId] = useState<number | null>(null)
+  const completionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const params = useLocalSearchParams()
   const router = useRouter()
 
@@ -35,6 +36,15 @@ export default function MyWorkScreen() {
       router.replace('/(tabs)/myWork')
     }
   }, [showAddTaskModal, params.action, router])
+
+  // Cleanup effect to clear timeouts
+  useEffect(() => {
+    return () => {
+      if (completionTimeoutRef.current) {
+        clearTimeout(completionTimeoutRef.current)
+      }
+    }
+  }, [])
 
 
   const getTasksFromStorage = async () => {
@@ -89,16 +99,34 @@ export default function MyWorkScreen() {
       setCompletedTaskId(taskId)
       setShowFlashMessage(true)
       
-      setTimeout(() => {
+      // Clear any existing timeout
+      if (completionTimeoutRef.current) {
+        clearTimeout(completionTimeoutRef.current)
+      }
+      
+      // Set new timeout for task removal
+      completionTimeoutRef.current = setTimeout(() => {
         animateTaskCompletion(taskId)
       }, 7000)
     } else {
       setShowFlashMessage(false)
+      // Clear timeout if task is uncompleted
+      if (completionTimeoutRef.current) {
+        clearTimeout(completionTimeoutRef.current)
+        completionTimeoutRef.current = null
+      }
     }
   }
 
   const handleUndoTaskCompletion = () => {
     if (completedTaskId) {
+      // Clear the completion timeout to prevent task removal
+      if (completionTimeoutRef.current) {
+        clearTimeout(completionTimeoutRef.current)
+        completionTimeoutRef.current = null
+      }
+      
+      // Revert the task back to pending status
       setTasks(prevTasks => 
         prevTasks.map(task => 
           task.id === completedTaskId 
@@ -107,12 +135,19 @@ export default function MyWorkScreen() {
         )
       )
       
+      // Hide the FlashMessage
       setShowFlashMessage(false)
       setCompletedTaskId(null)
     }
   }
 
   const handleCloseFlashMessage = () => {
+    // Clear the completion timeout when manually closing
+    if (completionTimeoutRef.current) {
+      clearTimeout(completionTimeoutRef.current)
+      completionTimeoutRef.current = null
+    }
+    
     setShowFlashMessage(false)
     setCompletedTaskId(null)
   }

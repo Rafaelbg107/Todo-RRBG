@@ -1,8 +1,6 @@
-# Welcome to your Expo app 👋
+# Todo App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
-
-## Get started
+## Setup
 
 1. Install dependencies
 
@@ -15,36 +13,24 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```bash
    npx expo start
    ```
+### For Web
 
-In the output, you'll find options to open the app in a
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Time log
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+From project creation, figma design reconginition and development to minimum deliverable it took
+me around 2 hours and 30 minutes. A little bit more fo time deploying as I had never deployed app demos.
 
-## Get a fresh project
+## AI usage
+I mainly used Cursor, as it worked for autocompletion. It generated the code for task completion animation and
+modal design. It also used as debugger for solving issues on the road.
 
-When you're ready, run:
+## TODOs & trade-offs
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Tab implementation. As it was only visual I did left it for the end but I ran out of time.
+- Undo check style. As I was running out of time I used a previous design I have done previously that served a similar purpose so I did not changed mucha the design.
+- Animation for remaining tasks. Time wise I was not able to implement it.
+- Filter buttons.
+- Drag and drop.
+- Themes.
+- Accessibility.
